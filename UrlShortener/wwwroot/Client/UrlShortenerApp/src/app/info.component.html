@@ -1,0 +1,14 @@
+<div class="card" *ngIf="UrlInfo; else loading">
+  <div class="card-body">
+  <h2 class="card-title">URL Information</h2>
+  <p class="card-text"><strong>Long URL:</strong> {{ UrlInfo.longUrl }}</p>
+  <p class="card-link"><strong>Short URL:</strong> <a [href]="UrlInfo.shortUrl" target="_blank">{{ UrlInfo.shortUrl }}</a></p>
+  <p class="card-text"><strong>Created At:</strong> {{ UrlInfo.createdAt | date:'short' }}</p>
+  <p class="card-text"><strong>Created By:</strong> {{ UrlInfo.createdBy }}</p>
+  </div>
+</div>
+
+<ng-template #loading>
+  <p>Loading...</p>
+</ng-template>
+

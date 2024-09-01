@@ -1,0 +1,36 @@
+<form class="form-inline mb-3" *ngIf="urls[0].isAuthorized">
+  <div class="form-group mr-2">
+    <input type="text" class="form-control" [(ngModel)]="url" required placeholder="Enter URL">
+  </div>
+  <br>
+  <button type="button" class="btn btn-success" (click)="add()">Add Url</button>
+</form>
+
+<div class="text-danger mb-3">{{errorMessage}}</div>
+<table *ngIf="!isLoading;"  class="table">
+  <thead>
+    <tr>
+      <th>Long URL</th>
+      <th>Short URL</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let url of urls">
+      <td>{{ url.longUrl }}</td>
+      <td><a [href]="url.shortUrl" target="_blank">{{ url.shortUrl }}</a></td>
+      <td>
+        <button class="btn btn-primary" (click)="info(url.id)">Info</button> | 
+        <button class="btn btn-danger" *ngIf="url.isAuthor || url.isAdmin" (click)="delete(url.id)">Delete</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<ng-template #noUrls>
+  <p *ngIf="urls.length === 0">No URLs found.</p>
+</ng-template>
+
+<router-outlet></router-outlet>
