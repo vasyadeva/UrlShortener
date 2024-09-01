@@ -2,7 +2,11 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<app-root></app-root>
+
+@section Scripts {
+    <script type="module" src="~/Client/UrlShortenerApp/dist/url-shortener-app/browser/polyfills.js"></script>
+    <script type="module" src="~/Client/UrlShortenerApp/dist/url-shortener-app/browser/main.js"></script>
+    <script type="module" src="~/Client/UrlShortenerApp/dist/url-shortener-app/browser/scripts.js"></script>
+
+}

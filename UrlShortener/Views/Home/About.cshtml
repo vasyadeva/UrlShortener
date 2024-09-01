@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "About";
+    var description = ViewData["Description"] as string;
+}
+
+<div class="card">
+    <p class="card-text">@description</p>
+</div>
+
+<br />
+@if (User.IsInRole("Administrator"))
+{
+    <form method="post" asp-action="About">
+        <textarea name="description" class="form-control" rows="4">@description</textarea>
+        <button type="submit" class="btn btn-primary mt-2">Save</button>
+    </form>
+}

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UrlShortener.Data;
 
@@ -11,9 +12,11 @@ using UrlShortener.Data;
 namespace UrlShortener.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240831133004_AddedRolesSetting")]
+    partial class AddedRolesSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,15 +160,15 @@ namespace UrlShortener.Data.Migrations
                         {
                             Id = "ccf9bfb8-47d6-41bf-9c5d-502",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "ba6be20f-1a58-4d10-b8df-e6ae2ed87f7c",
+                            ConcurrencyStamp = "8fc47296-9dee-4e42-8778-fcdf9bdbc525",
                             Email = "admin@test.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@TEST.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJ9bBnTgMxxqi38gKuOTHGUrIPEdOHKM9MB2hBmfidD7tz7tfopTDCr8IttzGdkzoA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEWOQhF8zjpMWwhZ4myKiI2RigF5ROLM3efXlNDKqh9CvSvEZDLw+M7MmEZhtAMdQA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "cc371b18-03ac-4ab5-86ab-e7dcdd029ed4",
+                            SecurityStamp = "e7e185b0-73e7-449e-b93a-00676fbc70da",
                             TwoFactorEnabled = false,
                             UserName = "admin"
                         },
@@ -173,15 +176,15 @@ namespace UrlShortener.Data.Migrations
                         {
                             Id = "37bb0930-ee5b-483a-88a9-9fc2dab9a087",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "d8d03755-1824-49f6-abfd-b0ed4595797b",
+                            ConcurrencyStamp = "0ec4ad9b-48cb-4527-b8a9-6ac08a26a2f4",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
                             NormalizedUserName = "USER",
-                            PasswordHash = "AQAAAAIAAYagAAAAEHKD0CgdBvl5ims04qs+yF0iGymlZHeSeOv770ZrR0amEBSqKVBkFY8sprQMN1kHcw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB7S+xb/Le5Mbs0CeLaUbtJbp5amwN29tPtvQDKEYchx+CfxSwpZtb1Imgg6qVvf8Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "157e1363-23d3-442d-85ba-8d5f55cbc801",
+                            SecurityStamp = "79e54dba-230d-465b-8627-f7b69751112b",
                             TwoFactorEnabled = false,
                             UserName = "user"
                         },
@@ -189,15 +192,15 @@ namespace UrlShortener.Data.Migrations
                         {
                             Id = "37bb0930-ee5b-483a-88a9-9fc2dab9a903",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "c5fefe1a-195f-4320-8f66-e75f9383557c",
+                            ConcurrencyStamp = "761944d1-6ed4-4ce0-add2-d2443d573d9a",
                             Email = "user2@localhost.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "USER2@LOCALHOST.COM",
                             NormalizedUserName = "USER2",
-                            PasswordHash = "AQAAAAIAAYagAAAAEDTYiQSpUQTeiojEwRdjoMN2je3PPNbeccjAg/ouSTGNP3jWLdUKSQqsf03jRcY0hw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKU/OHAbKBoNFOkZr+PTBBslVzZPNOuUb1ww+QJeP/4YINddriDwYghApnZj0o5izw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1c655db3-0012-40d6-9d68-b25c979e2bfa",
+                            SecurityStamp = "e0dc016b-5391-4f53-b589-306c4cde96bc",
                             TwoFactorEnabled = false,
                             UserName = "user2"
                         });
@@ -325,7 +328,7 @@ namespace UrlShortener.Data.Migrations
                         new
                         {
                             Id = 1,
-                            Text = "URL shortener service is designed to simplify and enhance the management of long web addresses. Whether you’re sharing links on social media, in emails, or anywhere else, the tool helps by converting lengthy URLs into shorter, more manageable links.\r\n\r\nHow It Works:\r\n\r\n    Creating Short URLs:\r\n        When you provide a long URL, the service generates a unique short link for you. This short link redirects users to the original long URL, but in a much more convenient format.\r\n\r\n    Generating Unique Short Codes:\r\n        Each short link is created using a combination of letters and numbers, ensuring that every link is unique. This short code is what users will see and click on, making it easy to remember and share.\r\n\r\n    Managing Your Links:\r\n        You can view all the short URLs you’ve created, along with details like the original long URL and the date it was created. If you have administrator privileges, you can also manage and delete URLs.\r\n\r\n    Permissions and Security:\r\n        Only authorized users, like administrators or the original creators, can delete or modify URLs. This ensures that your links are secure and only accessible by those who have the right permissions."
+                            Text = "Some Text"
                         });
                 });
 
@@ -336,10 +339,6 @@ namespace UrlShortener.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
