@@ -10,13 +10,15 @@ namespace UrlShortener.Services
 {
     public class UrlService : IUrlService
     {
-        private const string ShortUrlBase = "https://localhost:7087";
+        private readonly string ShortUrlBase;
         private readonly ApplicationDbContext _context;
         private readonly IHttpContextAccessor _httpContextAccessor;
-        public UrlService(ApplicationDbContext _context, IHttpContextAccessor httpContextAccessor)
+
+        public UrlService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor, IConfiguration configuration)
         {
-            this._context = _context;
+            _context = context;
             _httpContextAccessor = httpContextAccessor;
+            ShortUrlBase = configuration["ShortenerUrl:BaseUrl"];
         }
         public async Task<string> CreateShortUrl(string longUrl, string UserId)
         {
