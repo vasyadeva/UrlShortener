@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using UrlShortener.Interfaces;
@@ -28,6 +29,7 @@ namespace UrlShortener.Controllers
         }
 
         [HttpPost("AddUrl")]
+        [Authorize]
         public IActionResult AddUrl([FromBody] UrlDto urlDto)
         {
             var UserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -41,6 +43,7 @@ namespace UrlShortener.Controllers
         }
 
         [HttpDelete("DeleteUrl/{id}")]
+        [Authorize]
         public IActionResult DeleteUrl(int id)
         {
             var response = urlService.DeleteUrlById(id).Result;
